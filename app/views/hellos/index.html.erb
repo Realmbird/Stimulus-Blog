@@ -1,0 +1,39 @@
+<%= stylesheet_link_tag "button" %>
+<h1>Hello</h1>
+
+<%= turbo_frame_tag id="hello", src: new_hello_path do %>
+  <div>
+    I am a placeholder! After the request to new_photo_path is finished,
+    I will be replaced with the content inside of that page's turbo frame
+    with the id of "Hello".
+  </div>
+<% end %>
+<div id="hellos">
+  <%= render @hellos %>
+</div> 
+<div data-controller = "toggle"  data-toggle-hide-class="hidden">
+  <h1 data-toggle-target = "invis">
+    Ghost 
+  </h1>
+  <button data-action = "toggle#clicked">Toggle Ghost</button>
+</div>
+<div data-controller = "toggle" data-toggle-switch-class="hidden" data-toggle-hide-class="hidden">
+  <button data-toggle-target = "show" data-action = "toggle#transform">Transforms</button>
+  <h2 data-toggle-target = "invis">Other Element</h2>
+</div>
+
+<%= form_with url: "/hellos", method: :get do |form|%>
+  
+  <% @hellos.each do |hello| %>
+    <div data-controller = "toggle" data-toggle-highlight-class = "show" data-toggle-target = "highlight">
+      <h3>Hello#<%= hello.id %></h3>
+      <p><%= hello.text %></p>
+      <%= form.check_box :hello, data: {action: "toggle#highlight"}%>
+    </div>
+  <% end %>
+<% end %>
+
+<div data-controller = "toggle" data-toggle-hide-class="hidden">
+  <input type = "text" data-action = "toggle#changed" data-toggle-target = "input" maxlength="280">
+  <h2 data-toggle-target = "invis">Warning maximum length is 280 words</h2>
+</div>

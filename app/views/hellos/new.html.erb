@@ -1,0 +1,6 @@
+<%= turbo_frame_tag "hello" do %>
+  <%= form_with model: @hello do |hello| %>
+    <%= hello.label :text, "Text: "%>
+    <%= hello.text_field :text %>
+  <% end %>
+<% end %>
