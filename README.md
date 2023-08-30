@@ -1,5 +1,5 @@
 # Project: Stimulus-Blog
-# What is this<
+# What is this
 This was an experiment to get used to using stimulus and turbo with rails to make single page applications (SPA).
 What I did with stimulus and Turbo
 1. Added button to show another element with stimulus
